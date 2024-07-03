@@ -1,0 +1,15 @@
+<launch>
+    <!-- 设置延时时间，单位为秒 -->
+    <param name="/pwm_control/delay_duration" type="double" value="0.05" />
+    <!-- 设置pwm 大小 -->
+    <param name="seed_pwm_value" type="double" value="90" />
+
+    <!-- seed_pwm_pub node -->
+    <node name="seed_pwm_pub" pkg="pwm_control" type="seed_pwm_pub" output="screen" />
+
+    <!-- 延时 -->
+    <!-- <node name="delay" pkg="pwm_control" type="delay" output="screen" /> -->
+
+    <!-- seed_control node -->
+    <node name="seed_control" pkg="pwm_control" type="seed_control" output="screen" />
+</launch>

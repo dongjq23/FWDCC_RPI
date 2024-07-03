@@ -1,0 +1,20 @@
+<launch>
+    <!-- 设置延时时间，单位为秒 -->
+    <param name="/pwm_control/delay_duration" type="double" value="0.2" />
+    <!-- 加载参数 -->
+    <rosparam command="load" file="$(find pwm_control)/launch/vehicle_parameters.yaml" />
+    
+    <!-- 写入pwm参数 -->
+    <node name="pwm_write" pkg="pwm_control" type="pwm_control" output="screen" />
+    <!-- 速度测算 -->
+    <node name="vel_test" pkg="pwm_control" type="vel_test" output="screen" />
+        <!-- 速度逆解 -->
+    <node name="vel_inverse" pkg="pwm_control" type="vel_inverse" output="screen" />
+    
+
+    <!-- 延时 -->
+    <!-- <node name="delay" pkg="pwm_control" type="delay" output="screen" /> -->
+
+    <!-- pid调速 -->
+    <node name="pid_speed_control" pkg="pwm_control" type="pid_speed_control" output="screen" />
+</launch>
